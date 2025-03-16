@@ -12,6 +12,7 @@ export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
   private async hashPassword(password: string) {
+    console.log(password,`PASSWORD`)
     const salt = await genSalt(10);
     return hash(password, salt);
   }
@@ -37,5 +38,10 @@ export class UsersService {
 
   remove(id: string) {
     return `This action removes a #${id} user`;
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    console.log(email,'EMAIL')
+    return await this.userModel.findOne({email: email}).exec()
   }
 }

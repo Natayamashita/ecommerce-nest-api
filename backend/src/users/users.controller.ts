@@ -14,6 +14,11 @@ export class UsersController {
     return await this.usersService.create(createUserDto);
   }
 
+  @Get('findByEmail')
+  async findByEmail(@Param('email') email : string) {
+    return this.usersService.findByEmail(email);
+  }
+
   @Get()
   findAll() {
     return this.usersService.findAll();

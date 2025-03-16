@@ -16,7 +16,7 @@ export class User {
     @Exclude()
     password: string;
 
-    @Prop()
+    @Prop({unique: true})
     @Expose()
     email: string;
 
